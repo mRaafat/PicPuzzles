@@ -16,8 +16,8 @@ public class Category extends Model{
     @ManyToOne
     public List<User> users;
     
-    public Category(){
-        this.catName = null;
+    public Category(String catName){
+        this.catName = catName;
         this.pictures = null;
         this.users = null;
     }
