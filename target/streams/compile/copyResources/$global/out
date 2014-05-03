@@ -1,0 +1,6 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(/home/mohamed/Documents/PicPuzzle/conf/routes,/home/mohamed/Documents/PicPuzzle/target/scala-2.10/classes/routes)[0m
+[0m[[0mdebug[0m] [0m	(/home/mohamed/Documents/PicPuzzle/conf/application.conf,/home/mohamed/Documents/PicPuzzle/target/scala-2.10/classes/application.conf)[0m
+[0m[[0mdebug[0m] [0m	(/home/mohamed/Documents/PicPuzzle/conf/evolutions,/home/mohamed/Documents/PicPuzzle/target/scala-2.10/classes/evolutions)[0m
+[0m[[0mdebug[0m] [0m	(/home/mohamed/Documents/PicPuzzle/conf/evolutions/default,/home/mohamed/Documents/PicPuzzle/target/scala-2.10/classes/evolutions/default)[0m
+[0m[[0mdebug[0m] [0m	(/home/mohamed/Documents/PicPuzzle/conf/evolutions/default/1.sql,/home/mohamed/Documents/PicPuzzle/target/scala-2.10/classes/evolutions/default/1.sql)[0m
