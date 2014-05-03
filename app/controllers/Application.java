@@ -3,7 +3,6 @@ package controllers;
 import play.*;
 import play.mvc.*;
 import views.html.*;
-package controllers;
 import play.data.*;
 import static play.data.Form.*;
 import models.*;
@@ -21,9 +20,9 @@ public class Application extends Controller {
     }
     
     public static Result signUp(){
-        initializeDB();
-        
-        return ok(signUp.render());
+       // initializeDB();
+        List<Category> categories = Category.find.all();
+        return ok(signUp.render(categories));
     }
     
      public static void initializeDB(){
@@ -38,13 +37,14 @@ public class Application extends Controller {
         cat3.save();
         cat4.save();
         cat5.save();
-        
+        init = true;
+        /*
         for(int i=1;i<=55;i++){
           Image i = new Image (i,"images/"+i+".jpg");
           i.save();
           
-        }
-        init = true;
+        }*/
+        
        }
     }
 

@@ -1,18 +1,82 @@
-@(categories: List[Category])
-@main("Sign up")
+@(categories: List[Category],userForm:Form[User])
+@import helper.twitterBootstrap._
+@main("Signup"){
 
 <head>
     
     <title>Sign up | Sign up page</title>
-    <div class="Container">
-    <h1>Please enter your details below</h1>
-    </div>
     
 </head>
 
 <body>
 
+    @helper.form(routes.Applications.login(){
+    <div class="container">
 
+      <form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Please enter your details below</h2>
+        <input type="text" class="form-control" placeholder="Name" required>
+        <input type="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" required>
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <div class="text-center">
+            
+        <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+        <p> <h3>Choose a category then choose corresoponding places</h3></p>
+        <select class="form-control" title="choose a category" name="Categories" >
+        @for(category <- categories){
+        <option>@category.catName</option>
+        }
+        </select>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="1">1</button>
+                </div> <div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="2">2</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="3">3</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="4">4</button><br>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="5">5</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="6">6</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block " id="7">7</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="8 ">8</button><br>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="9">9</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="10">10</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="11">11</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="12">12</button><br>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="13">13</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="14">14</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="15">15</button>
+                 </div><div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" id="16">16</button>
+                 </div>
+            </div>
+        </div>
+        
+      </form>
+
+    </div>
+    }
 
 </body>
 
+}

@@ -1,6 +1,6 @@
 // @SOURCE:/home/mohamed/Documents/PicPuzzle/conf/routes
-// @HASH:9c24f09449355737d0bfbe9ca53280febbd777c7
-// @DATE:Sat May 03 14:10:33 EET 2014
+// @HASH:d0363530b1427afa060f5cd750fd726fc932977b
+// @DATE:Sat May 03 17:17:02 EET 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -35,7 +35,7 @@ class ReverseApplication {
     
 
 // @LINE:6
-def index(): Call = {
+def signUp(): Call = {
    Call("GET", _prefix)
 }
                                                 
@@ -73,8 +73,8 @@ class ReverseApplication {
     
 
 // @LINE:6
-def index : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.index",
+def signUp : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.signUp",
    """
       function() {
       return _wA({method:"GET", url:"""" + _prefix + """"})
@@ -112,8 +112,8 @@ class ReverseApplication {
     
 
 // @LINE:6
-def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.index(), HandlerDef(this, "controllers.Application", "index", Seq(), "GET", """ Home page""", _prefix + """""")
+def signUp(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.signUp(), HandlerDef(this, "controllers.Application", "signUp", Seq(), "GET", """ Home page""", _prefix + """""")
 )
                       
     

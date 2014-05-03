@@ -21,6 +21,9 @@ public class Category extends Model{
         this.pictures = null;
         this.users = null;
     }
+    public String getTitle(){
+        return this.catName;
+    }
      public static Finder<String,Category> find = new Finder<String,Category>(
         String.class, Category.class
     ); 

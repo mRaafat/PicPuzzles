@@ -1,6 +1,6 @@
 // @SOURCE:/home/mohamed/Documents/PicPuzzle/conf/routes
-// @HASH:9c24f09449355737d0bfbe9ca53280febbd777c7
-// @DATE:Sat May 03 14:10:33 EET 2014
+// @HASH:d0363530b1427afa060f5cd750fd726fc932977b
+// @DATE:Sat May 03 17:17:02 EET 2014
 
 
 import play.core._
@@ -29,13 +29,13 @@ lazy val defaultPrefix = { if(Routes.prefix.endsWith("/")) "" else "/" }
 
 
 // @LINE:6
-private[this] lazy val controllers_Application_index0 = Route("GET", PathPattern(List(StaticPart(Routes.prefix))))
+private[this] lazy val controllers_Application_signUp0 = Route("GET", PathPattern(List(StaticPart(Routes.prefix))))
         
 
 // @LINE:9
 private[this] lazy val controllers_Assets_at1 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+def documentation = List(("""GET""", prefix,"""controllers.Application.signUp()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -44,9 +44,9 @@ def documentation = List(("""GET""", prefix,"""controllers.Application.index()""
 def routes:PartialFunction[RequestHeader,Handler] = {
 
 // @LINE:6
-case controllers_Application_index0(params) => {
+case controllers_Application_signUp0(params) => {
    call { 
-        invokeHandler(controllers.Application.index(), HandlerDef(this, "controllers.Application", "index", Nil,"GET", """ Home page""", Routes.prefix + """"""))
+        invokeHandler(controllers.Application.signUp(), HandlerDef(this, "controllers.Application", "signUp", Nil,"GET", """ Home page""", Routes.prefix + """"""))
    }
 }
         
