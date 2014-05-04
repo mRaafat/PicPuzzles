@@ -21,10 +21,15 @@ public class Application extends Controller {
     
     public static Result signUp(){
        // initializeDB();
-        List<Category> categories = Category.find.all();
-        return ok(signUp.render(categories));
+    //    List<Category> categories = Category.find.all();
+        return ok();//signUp.render(categories));
     }
     
+        public static Result login(){
+        List<Category> categories = Category.find.all();
+        return ok(login.render(User.find.byId(""),Form.form(Category.class)));
+    }
+
      public static void initializeDB(){
       if(!init){
         Category cat1 = new Category("Planes");

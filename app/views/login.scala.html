@@ -1,0 +1,64 @@
+@(user: User, helpForm: Form[Category])
+
+@main("User") {
+	<head>
+	<style>
+		.cell {width:100px;height:100px;}
+	</style>
+	<script>
+	function allowDrop(ev)
+	{
+	ev.preventDefault();
+	}
+
+	function drag(ev)
+	{
+	ev.dataTransfer.setData("Text",ev.target.id);
+	}
+
+	function drop(ev)
+	{
+	var me = document.getElementById(ev.target.id);
+	ev.preventDefault();
+	var data=ev.dataTransfer.getData("Text");
+	var pic = document.getElementById(data);
+	var temp = pic.src;
+	pic.src = me.src;
+	me.src = temp;
+	}
+	</script>
+	</head>
+	<body>
+
+	<table border="1">
+	<tr>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img1" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img2" src="images/wheels.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img3" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img4" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+	</tr>
+
+	<tr>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img5" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img6" src="images/wheels.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img7" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img8" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+	</tr>
+
+	<tr>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img9" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img10" src="images/wheels.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img11" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img12" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+	</tr>
+
+	<tr>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img13" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img14" src="images/wheels.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img15" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img16" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+	</tr>
+	</table>
+
+	</body>
+}

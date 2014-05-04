@@ -20,14 +20,15 @@ import play.api.data.Field
 import play.mvc.Http.Context.Implicit._
 import views.html._
 /**/
-object signUp extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template1[List[Category],play.api.templates.HtmlFormat.Appendable] {
+object signUp extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template2[List[Category],Form[User],play.api.templates.HtmlFormat.Appendable] {
 
     /**/
-    def apply/*1.2*/(categories: List[Category]):play.api.templates.HtmlFormat.Appendable = {
-        _display_ {
+    def apply/*1.2*/(categories: List[Category],userForm:Form[User]):play.api.templates.HtmlFormat.Appendable = {
+        _display_ {import helper.twitterBootstrap._
 
-Seq[Any](format.raw/*1.30*/("""
-"""),_display_(Seq[Any](/*2.2*/main("Signup")/*2.16*/{_display_(Seq[Any](format.raw/*2.17*/("""
+
+Seq[Any](format.raw/*1.50*/("""
+"""),_display_(Seq[Any](/*3.2*/main("Signup")/*3.16*/{_display_(Seq[Any](format.raw/*3.17*/("""
 
 <head>
     
@@ -37,6 +38,7 @@ Seq[Any](format.raw/*1.30*/("""
 
 <body>
 
+    """),_display_(Seq[Any](/*13.6*/helper/*13.12*/.form(routes.Application.signUp())/*13.46*/{_display_(Seq[Any](format.raw/*13.47*/("""
     <div class="container">
 
       <form class="form-signin" role="form">
@@ -56,9 +58,9 @@ Seq[Any](format.raw/*1.30*/("""
             <div class="col-md-6">
         <p> <h3>Choose a category then choose corresoponding places</h3></p>
         <select class="form-control" title="choose a category" name="Categories" >
-        """),_display_(Seq[Any](/*31.10*/for(category <- categories) yield /*31.37*/{_display_(Seq[Any](format.raw/*31.38*/("""
-        <option>"""),_display_(Seq[Any](/*32.18*/category/*32.26*/.catName)),format.raw/*32.34*/("""</option>
-        """)))})),format.raw/*33.10*/("""
+        """),_display_(Seq[Any](/*33.10*/for(category <- categories) yield /*33.37*/{_display_(Seq[Any](format.raw/*33.38*/("""
+        <option>"""),_display_(Seq[Any](/*34.18*/category/*34.26*/.catName)),format.raw/*34.34*/("""</option>
+        """)))})),format.raw/*35.10*/("""
         </select>
             </div>
             <div class="col-md-6">
@@ -96,31 +98,28 @@ Seq[Any](format.raw/*1.30*/("""
                 <button type="button" class="btn btn-default btn-block" id="16">16</button>
                  </div>
             </div>
-        </div>
-        
+        </div>        
       </form>
-
     </div>
-
+    """)))})),format.raw/*76.6*/("""
 </body>
-
 """)))})))}
     }
     
-    def render(categories:List[Category]): play.api.templates.HtmlFormat.Appendable = apply(categories)
+    def render(categories:List[Category],userForm:Form[User]): play.api.templates.HtmlFormat.Appendable = apply(categories,userForm)
     
-    def f:((List[Category]) => play.api.templates.HtmlFormat.Appendable) = (categories) => apply(categories)
+    def f:((List[Category],Form[User]) => play.api.templates.HtmlFormat.Appendable) = (categories,userForm) => apply(categories,userForm)
     
     def ref: this.type = this
 
 }
                 /*
                     -- GENERATED --
-                    DATE: Sat May 03 22:17:21 EET 2014
-                    SOURCE: /home/mohamed/Documents/PicPuzzle/app/views/signUp.scala.html
-                    HASH: 78fc126f1f7e3b0a3a4b9b1ded0dfb6d917c1545
-                    MATRIX: 783->1|905->29|941->31|963->45|1001->46|2027->1036|2070->1063|2109->1064|2163->1082|2180->1090|2210->1098|2261->1117
-                    LINES: 26->1|29->1|30->2|30->2|30->2|59->31|59->31|59->31|60->32|60->32|60->32|61->33
+                    DATE: Sun May 04 08:54:40 EET 2014
+                    SOURCE: /Essam Hafez/Gam3a/10th semester/909/project/PicPuzzles/app/views/signUp.scala.html
+                    HASH: 413de473b4f1698e4d5c33d35f27e883f7391ef6
+                    MATRIX: 794->1|969->49|1005->85|1027->99|1065->100|1183->183|1198->189|1241->223|1280->224|2229->1137|2272->1164|2311->1165|2365->1183|2382->1191|2412->1199|2463->1218|4860->3584
+                    LINES: 26->1|30->1|31->3|31->3|31->3|41->13|41->13|41->13|41->13|61->33|61->33|61->33|62->34|62->34|62->34|63->35|104->76
                     -- GENERATED --
                 */
             
