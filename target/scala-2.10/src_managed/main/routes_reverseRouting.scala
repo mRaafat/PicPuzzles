@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 // @SOURCE:/Essam Hafez/Gam3a/10th semester/909/project/PicPuzzles/conf/routes
-// @HASH:a56d73997666753319ac081b917ae72aeed5a7bd
-// @DATE:Sun May 04 08:53:00 EET 2014
-=======
-// @SOURCE:/home/mohamed/Documents/PicPuzzle/conf/routes
-// @HASH:4978330a440cf0765c2a4b29ec9d77d9c1abee02
-// @DATE:Sun May 04 02:16:46 EET 2014
->>>>>>> 54fc45df253886bde714d000874945b7dc6820af
+// @HASH:c2b5cc8f8635e4a38e07922c866d549184996302
+// @DATE:Sun May 04 12:35:55 EET 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -19,29 +13,17 @@ import play.libs.F
 import Router.queryString
 
 
-<<<<<<< HEAD
-// @LINE:11
-// @LINE:8
-// @LINE:6
-package controllers {
-
-// @LINE:11
-class ReverseAssets {
-    
-
-// @LINE:11
-=======
-// @LINE:10
+// @LINE:12
+// @LINE:9
 // @LINE:7
 // @LINE:6
 package controllers {
 
-// @LINE:10
+// @LINE:12
 class ReverseAssets {
     
 
-// @LINE:10
->>>>>>> 54fc45df253886bde714d000874945b7dc6820af
+// @LINE:12
 def at(file:String): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("file", file))
 }
@@ -50,11 +32,8 @@ def at(file:String): Call = {
 }
                           
 
-<<<<<<< HEAD
-// @LINE:8
-=======
+// @LINE:9
 // @LINE:7
->>>>>>> 54fc45df253886bde714d000874945b7dc6820af
 // @LINE:6
 class ReverseApplication {
     
@@ -71,7 +50,7 @@ def index(): Call = {
 }
                                                 
 
-// @LINE:8
+// @LINE:9
 def login(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "login")
 }
@@ -83,29 +62,17 @@ def login(): Call = {
                   
 
 
-<<<<<<< HEAD
-// @LINE:11
-// @LINE:8
-// @LINE:6
-package controllers.javascript {
-
-// @LINE:11
-class ReverseAssets {
-    
-
-// @LINE:11
-=======
-// @LINE:10
+// @LINE:12
+// @LINE:9
 // @LINE:7
 // @LINE:6
 package controllers.javascript {
 
-// @LINE:10
+// @LINE:12
 class ReverseAssets {
     
 
-// @LINE:10
->>>>>>> 54fc45df253886bde714d000874945b7dc6820af
+// @LINE:12
 def at : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Assets.at",
    """
@@ -119,11 +86,8 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
-<<<<<<< HEAD
-// @LINE:8
-=======
+// @LINE:9
 // @LINE:7
->>>>>>> 54fc45df253886bde714d000874945b7dc6820af
 // @LINE:6
 class ReverseApplication {
     
@@ -150,7 +114,7 @@ def index : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:8
+// @LINE:9
 def login : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.login",
    """
@@ -167,30 +131,18 @@ def login : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
-<<<<<<< HEAD
-// @LINE:11
-// @LINE:8
-=======
-// @LINE:10
+// @LINE:12
+// @LINE:9
 // @LINE:7
->>>>>>> 54fc45df253886bde714d000874945b7dc6820af
 // @LINE:6
 package controllers.ref {
 
 
-<<<<<<< HEAD
-// @LINE:11
+// @LINE:12
 class ReverseAssets {
     
 
-// @LINE:11
-=======
-// @LINE:10
-class ReverseAssets {
-    
-
-// @LINE:10
->>>>>>> 54fc45df253886bde714d000874945b7dc6820af
+// @LINE:12
 def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]), "GET", """ Map static resources from the /public folder to the /assets URL path""", _prefix + """assets/$file<.+>""")
 )
@@ -199,11 +151,8 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
-<<<<<<< HEAD
-// @LINE:8
-=======
+// @LINE:9
 // @LINE:7
->>>>>>> 54fc45df253886bde714d000874945b7dc6820af
 // @LINE:6
 class ReverseApplication {
     
@@ -220,7 +169,7 @@ def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 )
                       
 
-// @LINE:8
+// @LINE:9
 def login(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.login(), HandlerDef(this, "controllers.Application", "login", Seq(), "GET", """""", _prefix + """login""")
 )

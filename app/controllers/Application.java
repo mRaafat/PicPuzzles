@@ -20,14 +20,12 @@ public class Application extends Controller {
  
         List<Category> categories = Category.find.all();
         return ok(signUp.render(categories,Form.form(User.class)));
-    
-        
     }
     
     public static Result signUp(){
        // initializeDB();
-       List<Category> categories = Category.find.all();
-        return ok();//signUp.render(categories));
+        //List<Category> categories = Category.find.all();
+        //return ok();//signUp.render(categories));
         DynamicForm requestData = Form.form().bindFromRequest();
         if(requestData.hasErrors()){
             return badRequest();
