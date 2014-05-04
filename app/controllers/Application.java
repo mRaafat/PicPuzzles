@@ -13,49 +13,76 @@ import javax.persistence.*;
 
 public class Application extends Controller {
 
+    public static boolean categorySet = false;
+    public static boolean attm1 = false;
+    public static boolean attm2= false;
+    public static int attempts = 0;
+    public static Integer pos1 = 0;
+    public static Integer pos2 = 0;
     public static boolean init = false;
     
     public static Result index() {
-        //initializeDB();
- 
+        initializeDB();
         List<Category> categories = Category.find.all();
         return ok(signUp.render(categories,Form.form(User.class)));
+    
+        
     }
     
     public static Result signUp(){
-       // initializeDB();
-        //List<Category> categories = Category.find.all();
-        //return ok();//signUp.render(categories));
+        DynamicForm requestData = Form.form().bindFromRequest();
+        List<Category> categories = Category.find.all();
+        if(requestData.hasErrors()){
+            return badRequest();
+        }else{
+            String email= requestData.get("email");
+            String name = requestData.get("name");
+            String password = requestData.get("password");
+            User newUser = new User(email,name,password);
+            newUser.save();
+            return ok(gridSeq.render(email,categories));
+        }
+
+    }
+    public static Result chooseGridSeq(String user1){
+        User user = User.find.byId(user1);
+        List<Category> categories = Category.find.all();
+        List<Integer> catAndSeq ;
         DynamicForm requestData = Form.form().bindFromRequest();
         if(requestData.hasErrors()){
             return badRequest();
         }else{
-            int x = 0;
-            String email= requestData.get("email");
-            String name = requestData.get("name");
-            String password = requestData.get("password");
-            String Categoryx = requestData.get("Categories");
-            String num = requestData.get("num");
-            if(num.equals("5")){
-                x = 5;
+            if(!categorySet){
+                Category cat = Category.find.byId(requestData.get("Categories"));
+                int category = cat.getID();
+                user.categorySeq.add(category);
+                user.save();
+                categorySet = true;
             }
-            Category cat = Category.find.byId(Categoryx);
-            int cat1 = cat.number;
-            int cat2;
-            int cat3;
-            User newUser = new User(email,name,password);
-            newUser.category1 = cat1;
-            newUser.save();
-            return ok(test.render(newUser,x));
+            
+                if(!attm1){
+                    pos1 = Integer.parseInt(requestData.get("num"));
+                    user.categorySeq.add(pos1);
+                    attm1 = true;
+                }else{
+                    if(!attm2){
+                        pos2 = Integer.parseInt(requestData.get("num"));
+                        user.categorySeq.add(pos2);
+                        attm2 = true;
+                        categorySet = false;
+                        attm1 = false;
+                        
+                    }
+                }
+                return ok(gridSeq.render(user.email,categories));
+            }
+            
+            
+            
         }
-
-    }
     
-        public static Result login(){
-        List<Category> categories = Category.find.all();
-        return ok(login.render(User.find.byId(""),Form.form(Category.class)));
-    }
 
+    
      public static void initializeDB(){
       if(!init){
         Category cat1 = new Category("Planes",1);
