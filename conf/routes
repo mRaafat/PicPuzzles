@@ -4,15 +4,15 @@
 
 # Home page
 GET     /                           controllers.Application.index()
+
 POST     /login                      controllers.Application.signUp() 
 
+POST     /gridSeq                   controllers.Application.chooseGridSeq(user:String)
 
-GET		/e							controllers.Application.chooseGridSeq(user:String)
 
-GET     /login                           controllers.Application.login()
+GET     /loginUser                          controllers.Application.login()
 
 GET		/validateLogin					controllers.Application.validateLogin()
-
 
 GET     /success                           controllers.Application.success()
 

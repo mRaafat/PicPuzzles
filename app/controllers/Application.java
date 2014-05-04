@@ -22,7 +22,7 @@ public class Application extends Controller {
     public static boolean init = false;
     
     public static Result index() {
-        initializeDB();
+       // initializeDB();
         List<Category> categories = Category.find.all();
         return ok(signUp.render(categories,Form.form(User.class)));
     
