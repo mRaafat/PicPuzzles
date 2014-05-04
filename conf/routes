@@ -10,7 +10,7 @@ POST     /login                      controllers.Application.signUp()
 POST     /gridSeq                   controllers.Application.chooseGridSeq(user:String)
 
 
-GET     /loginUser                          controllers.Application.login()
+GET     /loginUser                          controllers.Application.loginUser()
 
 GET		/validateLogin					controllers.Application.validateLogin()
 

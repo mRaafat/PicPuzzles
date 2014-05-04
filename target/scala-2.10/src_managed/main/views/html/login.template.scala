@@ -61,7 +61,8 @@ Seq[Any](format.raw/*1.40*/("""
 	"""),_display_(Seq[Any](/*33.3*/helper/*33.9*/.form(action = routes.Application.validateLogin())/*33.59*/ {_display_(Seq[Any](format.raw/*33.61*/("""
 	<table border="1">
 	<tr>
-		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img1" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<img id="img1" src=""""),_display_(Seq[Any](/*37.24*/routes/*37.30*/.Assets.at("images/plant1.jpg"))),format.raw/*37.61*/("""" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img2" src="images/wheels.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img3" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img4" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
@@ -88,7 +89,7 @@ Seq[Any](format.raw/*1.40*/("""
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img16" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
 	</tr>
 	</table>
-	""")))})),format.raw/*63.3*/("""
+	""")))})),format.raw/*64.3*/("""
 	</body>
 """)))})))}
     }
@@ -102,11 +103,11 @@ Seq[Any](format.raw/*1.40*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Sun May 04 15:22:03 EET 2014
+                    DATE: Sun May 04 15:54:25 EET 2014
                     SOURCE: /Essam Hafez/Gam3a/10th semester/909/project/PicPuzzles/app/views/login.scala.html
-                    HASH: 9cd397a131da6fd36c064c7659eab6692e36bdf1
-                    MATRIX: 787->1|919->39|956->42|976->54|1015->56|1067->82|1095->83|1147->108|1175->109|1248->155|1276->156|1327->180|1355->181|1404->203|1432->204|1508->253|1536->254|1585->276|1613->277|1854->491|1882->492|1949->524|1963->530|2022->580|2062->582|5076->3565
-                    LINES: 26->1|29->1|31->3|31->3|31->3|34->6|34->6|34->6|34->6|38->10|38->10|40->12|40->12|43->15|43->15|45->17|45->17|48->20|48->20|56->28|56->28|61->33|61->33|61->33|61->33|91->63
+                    HASH: ad9b76c8ca0edb556e9e9501fb3aa32558342a9f
+                    MATRIX: 787->1|919->39|956->42|976->54|1015->56|1067->82|1095->83|1147->108|1175->109|1248->155|1276->156|1327->180|1355->181|1404->203|1432->204|1508->253|1536->254|1585->276|1613->277|1854->491|1882->492|1949->524|1963->530|2022->580|2062->582|2219->703|2234->709|2287->740|5198->3620
+                    LINES: 26->1|29->1|31->3|31->3|31->3|34->6|34->6|34->6|34->6|38->10|38->10|40->12|40->12|43->15|43->15|45->17|45->17|48->20|48->20|56->28|56->28|61->33|61->33|61->33|61->33|65->37|65->37|65->37|92->64
                     -- GENERATED --
                 */
             

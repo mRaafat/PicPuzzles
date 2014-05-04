@@ -15,7 +15,12 @@ public class Picture extends Model{
     @ManyToOne
     public Category category;
     
-    public Picture(){
-        
+    public Picture(String image_link, Category category){
+        this.image_link = image_link;
+        this.category = category;
     }
+
+    public static Finder<String,Picture> find = new Finder<String,Picture>(
+        String.class, Picture.class
+    ); 
 }

@@ -12,6 +12,7 @@ public class User extends Model{
     public String name;
     public String email;
     public String password;
+    public GraphicalPassword graphicalPassword;
     public List<Integer> categorySeq;
 
     
@@ -19,7 +20,9 @@ public class User extends Model{
         this.email = email;
         this.name = name;
         this.password = password;
-        categorySeq = null;
+        this.graphicalPassword = new GraphicalPassword(this.email);
+        this.graphicalPassword.save();
+        categorySeq=null;
 
     }
     

@@ -9,6 +9,20 @@ create table category (
   constraint pk_category primary key (cat_name))
 ;
 
+create table graphical_password (
+  email                     varchar(255) not null,
+  cat1                      integer,
+  cat1image1                integer,
+  cat1image2                integer,
+  cat2                      integer,
+  cat2image1                integer,
+  cat2image2                integer,
+  cat3                      integer,
+  cat3image1                integer,
+  cat3image2                integer,
+  constraint pk_graphical_password primary key (email))
+;
+
 create table picture (
   id                        integer not null,
   image_link                varchar(255),
@@ -25,6 +39,8 @@ create table user (
 
 create sequence category_seq;
 
+create sequence graphical_password_seq;
+
 create sequence picture_seq;
 
 create sequence user_seq;
@@ -40,6 +56,8 @@ SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists category;
 
+drop table if exists graphical_password;
+
 drop table if exists picture;
 
 drop table if exists user;
@@ -47,6 +65,8 @@ drop table if exists user;
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists category_seq;
+
+drop sequence if exists graphical_password_seq;
 
 drop sequence if exists picture_seq;
 

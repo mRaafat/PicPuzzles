@@ -1,6 +1,6 @@
 // @SOURCE:/Essam Hafez/Gam3a/10th semester/909/project/PicPuzzles/conf/routes
-// @HASH:56fafa028b329726b181766e8d27b3181d1cd4f7
-// @DATE:Sun May 04 15:32:07 EET 2014
+// @HASH:c2fd78c19232ea941d6e9db04d761edd5eee0a80
+// @DATE:Sun May 04 15:34:14 EET 2014
 
 
 import play.core._
@@ -41,7 +41,7 @@ private[this] lazy val controllers_Application_chooseGridSeq2 = Route("POST", Pa
         
 
 // @LINE:13
-private[this] lazy val controllers_Application_login3 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("loginUser"))))
+private[this] lazy val controllers_Application_loginUser3 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("loginUser"))))
         
 
 // @LINE:15
@@ -55,7 +55,7 @@ private[this] lazy val controllers_Application_success5 = Route("GET", PathPatte
 // @LINE:20
 private[this] lazy val controllers_Assets_at6 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.signUp()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """gridSeq""","""controllers.Application.chooseGridSeq(user:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """loginUser""","""controllers.Application.login()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """validateLogin""","""controllers.Application.validateLogin()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """success""","""controllers.Application.success()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.signUp()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """gridSeq""","""controllers.Application.chooseGridSeq(user:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """loginUser""","""controllers.Application.loginUser()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """validateLogin""","""controllers.Application.validateLogin()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """success""","""controllers.Application.success()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -88,9 +88,9 @@ case controllers_Application_chooseGridSeq2(params) => {
         
 
 // @LINE:13
-case controllers_Application_login3(params) => {
+case controllers_Application_loginUser3(params) => {
    call { 
-        invokeHandler(controllers.Application.login(), HandlerDef(this, "controllers.Application", "login", Nil,"GET", """""", Routes.prefix + """loginUser"""))
+        invokeHandler(controllers.Application.loginUser(), HandlerDef(this, "controllers.Application", "loginUser", Nil,"GET", """""", Routes.prefix + """loginUser"""))
    }
 }
         

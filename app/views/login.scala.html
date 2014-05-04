@@ -33,7 +33,8 @@
 	@helper.form(action = routes.Application.validateLogin()) {
 	<table border="1">
 	<tr>
-		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img1" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<img id="img1" src="@routes.Assets.at("images/plant1.jpg")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img2" src="images/wheels.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img3" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img4" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>

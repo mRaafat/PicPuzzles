@@ -80,9 +80,19 @@ public class Application extends Controller {
             }
         }
             
+
+    public Integer [] getCategoryImages(int category){
+        List<Picture> pics = Picture.find.all();
+        int randomImage = (int) ((((Math.random()*100))%(pics.size())) + 1);
+        //Words word = Words.find.byId(randomImage);
+        return null;
+    }
             
-    public static Result login(){    
-        return ok(login.render(User.find.byId("a@a.com"), Form.form(Category.class)));
+    public static Result loginUser(){    
+        //initializeDB();
+        User user = User.find.byId("a@a.com");
+
+        return ok(login.render(user,Form.form(Category.class)));
     }
 
 
@@ -108,13 +118,35 @@ public class Application extends Controller {
         cat4.save();
         cat5.save();
         init = true;
-        /*
-        for(int i=1;i<=55;i++){
-          Image i = new Image (i,"images/"+i+".jpg");
-          i.save();
-          
-        }*/
-        
+
+        for(int i=1;i<=5;i++){
+          Picture x = new Picture ("images/pln"+i+".jpg",cat1);
+          x.save();
+        }
+        for(int i=1;i<=5;i++){
+          Picture x = new Picture ("images/car"+i+".jpg",cat2);
+          x.save();
+        }
+
+        for(int i=1;i<=5;i++){
+          Picture x = new Picture ("images/ppl"+i+".jpg",cat3);
+          x.save();
+        }
+        for(int i=1;i<=8;i++){
+          Picture x = new Picture ("images/plant"+i+".jpg",cat4);
+          x.save();
+        }
+        for(int i=1;i<=7;i++){
+          Picture x = new Picture ("images/build"+i+".jpg",cat5);
+          x.save();
+        }
+
+        User a = new User("a@a.com","a","a");
+        a.graphicalPassword.setGraphicalPassword1(2,1,2);
+        a.graphicalPassword.setGraphicalPassword2(5,3,4);
+        a.graphicalPassword.setGraphicalPassword3(1,15,16);
+        a.save();
+
        }
     }
 }

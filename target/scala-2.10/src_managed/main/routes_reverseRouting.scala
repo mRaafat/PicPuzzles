@@ -1,6 +1,6 @@
 // @SOURCE:/Essam Hafez/Gam3a/10th semester/909/project/PicPuzzles/conf/routes
-// @HASH:56fafa028b329726b181766e8d27b3181d1cd4f7
-// @DATE:Sun May 04 15:32:07 EET 2014
+// @HASH:c2fd78c19232ea941d6e9db04d761edd5eee0a80
+// @DATE:Sun May 04 15:34:14 EET 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -44,6 +44,12 @@ def at(file:String): Call = {
 class ReverseApplication {
     
 
+// @LINE:13
+def loginUser(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "loginUser")
+}
+                                                
+
 // @LINE:8
 def signUp(): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "login")
@@ -71,12 +77,6 @@ def success(): Call = {
 // @LINE:6
 def index(): Call = {
    Call("GET", _prefix)
-}
-                                                
-
-// @LINE:13
-def login(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "loginUser")
 }
                                                 
     
@@ -121,6 +121,17 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 // @LINE:6
 class ReverseApplication {
     
+
+// @LINE:13
+def loginUser : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.loginUser",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "loginUser"})
+      }
+   """
+)
+                        
 
 // @LINE:8
 def signUp : JavascriptReverseRoute = JavascriptReverseRoute(
@@ -176,17 +187,6 @@ def index : JavascriptReverseRoute = JavascriptReverseRoute(
    """
 )
                         
-
-// @LINE:13
-def login : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.login",
-   """
-      function() {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "loginUser"})
-      }
-   """
-)
-                        
     
 }
               
@@ -226,6 +226,12 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 class ReverseApplication {
     
 
+// @LINE:13
+def loginUser(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.loginUser(), HandlerDef(this, "controllers.Application", "loginUser", Seq(), "GET", """""", _prefix + """loginUser""")
+)
+                      
+
 // @LINE:8
 def signUp(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.signUp(), HandlerDef(this, "controllers.Application", "signUp", Seq(), "POST", """""", _prefix + """login""")
@@ -253,12 +259,6 @@ def success(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 // @LINE:6
 def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.index(), HandlerDef(this, "controllers.Application", "index", Seq(), "GET", """ Home page""", _prefix + """""")
-)
-                      
-
-// @LINE:13
-def login(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.login(), HandlerDef(this, "controllers.Application", "login", Seq(), "GET", """""", _prefix + """loginUser""")
 )
                       
     
