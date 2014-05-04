@@ -22,7 +22,7 @@ public class Application extends Controller {
     public static boolean init = false;
     
     public static Result index() {
-        initializeDB();
+       // initializeDB();
         List<Category> categories = Category.find.all();
         return ok(signUp.render(categories,Form.form(User.class)));
     
@@ -44,6 +44,8 @@ public class Application extends Controller {
         }
 
     }
+    
+
     public static Result chooseGridSeq(String user1){
         User user = User.find.byId(user1);
         List<Category> categories = Category.find.all();
@@ -76,13 +78,23 @@ public class Application extends Controller {
                 }
                 return ok(gridSeq.render(user.email,categories));
             }
-            
-            
-            
         }
-    
+            
+            
+    public static Result login(){    
+        return ok(login.render(User.find.byId("a@a.com"), Form.form(Category.class)));
+    }
 
-    
+
+    public static Result validateLogin(){
+
+    return success();
+
+    }
+
+    public static Result success(){
+        return ok(success.render());
+    }
      public static void initializeDB(){
       if(!init){
         Category cat1 = new Category("Planes",1);

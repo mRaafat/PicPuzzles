@@ -30,6 +30,7 @@
 	</head>
 	<body>
 
+	@helper.form(action = routes.Application.validateLogin()) {
 	<table border="1">
 	<tr>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img1" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
@@ -59,6 +60,6 @@
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img16" src="images/me.jpg" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
 	</tr>
 	</table>
-
+	}
 	</body>
 }

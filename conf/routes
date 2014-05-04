@@ -4,8 +4,17 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-POST     /login                     controllers.Application.signUp()
+
+POST     /login                      controllers.Application.signUp() 
+
 POST     /gridSeq                   controllers.Application.chooseGridSeq(user:String)
+
+
+GET     /loginUser                          controllers.Application.login()
+
+GET		/validateLogin					controllers.Application.validateLogin()
+
+GET     /success                           controllers.Application.success()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
