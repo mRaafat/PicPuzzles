@@ -26,6 +26,9 @@ public class Category extends Model{
     public String getTitle(){
         return this.catName;
     }
+    public int getID(){
+        return this.number;
+    }
 
      public static Finder<String,Category> find = new Finder<String,Category>(
         String.class, Category.class

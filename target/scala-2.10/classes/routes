@@ -6,6 +6,9 @@
 GET     /                           controllers.Application.index()
 POST     /login                      controllers.Application.signUp() 
 
+
+GET		/e							controllers.Application.chooseGridSeq(user:String)
+
 GET     /login                           controllers.Application.login()
 
 GET		/validateLogin					controllers.Application.validateLogin()

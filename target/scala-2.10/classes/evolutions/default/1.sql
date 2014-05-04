@@ -20,9 +20,6 @@ create table user (
   name                      varchar(255) not null,
   email                     varchar(255),
   password                  varchar(255),
-  category1                 integer,
-  category2                 integer,
-  category3                 integer,
   constraint pk_user primary key (name))
 ;
 

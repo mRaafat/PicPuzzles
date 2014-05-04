@@ -20,35 +20,35 @@ import play.api.data.Field
 import play.mvc.Http.Context.Implicit._
 import views.html._
 /**/
-object test extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template2[User,Integer,play.api.templates.HtmlFormat.Appendable] {
+object test extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template1[User,play.api.templates.HtmlFormat.Appendable] {
 
     /**/
-    def apply/*1.2*/(user:User, number: Integer):play.api.templates.HtmlFormat.Appendable = {
+    def apply/*1.2*/(user:User):play.api.templates.HtmlFormat.Appendable = {
         _display_ {import helper._
 
 import helper.twitterBootstrap._
 
 
-Seq[Any](format.raw/*1.30*/("""
+Seq[Any](format.raw/*1.13*/("""
 """),_display_(Seq[Any](/*4.2*/main("test")/*4.14*/{_display_(Seq[Any](format.raw/*4.15*/("""
-"""),_display_(Seq[Any](/*5.2*/user/*5.6*/.category1)),format.raw/*5.16*/(""" """),_display_(Seq[Any](/*5.18*/number)),format.raw/*5.24*/("""
-""")))})))}
+""")))})),format.raw/*5.2*/("""
+"""))}
     }
     
-    def render(user:User,number:Integer): play.api.templates.HtmlFormat.Appendable = apply(user,number)
+    def render(user:User): play.api.templates.HtmlFormat.Appendable = apply(user)
     
-    def f:((User,Integer) => play.api.templates.HtmlFormat.Appendable) = (user,number) => apply(user,number)
+    def f:((User) => play.api.templates.HtmlFormat.Appendable) = (user) => apply(user)
     
     def ref: this.type = this
 
 }
                 /*
                     -- GENERATED --
-                    DATE: Sun May 04 12:35:55 EET 2014
+                    DATE: Sun May 04 15:27:48 EET 2014
                     SOURCE: /Essam Hafez/Gam3a/10th semester/909/project/PicPuzzles/app/views/test.scala.html
-                    HASH: 3b6f96b74a7b732b7e87e6db549d828880cc59d9
-                    MATRIX: 779->1|951->29|987->82|1007->94|1045->95|1081->97|1092->101|1123->111|1160->113|1187->119
-                    LINES: 26->1|32->1|33->4|33->4|33->4|34->5|34->5|34->5|34->5|34->5
+                    HASH: 45027212524a0e017f574412de9ce9299e404e7e
+                    MATRIX: 771->1|926->12|962->65|982->77|1020->78|1052->80
+                    LINES: 26->1|32->1|33->4|33->4|33->4|34->5
                     -- GENERATED --
                 */
             

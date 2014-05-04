@@ -1,0 +1,63 @@
+@(user:String,categories: List[Category])
+@import helper._
+@import helper.twitterBootstrap._
+@main("gridSeq"){
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+                @helper.form(action=routes.Application.chooseGridSeq(user)){
+                <div class="col-md-3">
+                 <button type="submit" class="btn btn-default btn-block" value="1" name="num">1</button>
+                </div> <div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="2" name="num">2</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="3"name="num">3</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="4"name="num">4</button><br>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="5"name="num">5</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="6"name="num">6</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block " value="7"name="num">7</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="8 "name="num">8</button><br>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="9"name="num">9</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="10"name="num">10</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="11"name="num">11</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="12"name="num">12</button><br>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="13"name="num">13</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="14"name="num">14</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="15"name="num">15</button>
+                 </div><div class="col-md-3">
+                <button type="submit" class="btn btn-default btn-block" value="16"name="num">16</button>
+                 </div>
+                @helper.form(action=routes.Application.chooseGridSeq(user),'_id ->"Categories"){
+                <select class="form-control" title="choose a category" name="Categories" >
+                    @for(category <- categories){
+                    <option>@category.catName</option>
+                    
+    
+                }
+     
+                
+    
+
+                
+        
+            
+
+
+</body>
+}
+}
+}
