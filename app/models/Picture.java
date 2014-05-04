@@ -20,7 +20,7 @@ public class Picture extends Model{
         this.category = category;
     }
 
-    public static Finder<String,Picture> find = new Finder<String,Picture>(
-        String.class, Picture.class
+    public static Finder<Integer,Picture> find = new Finder<Integer,Picture>(
+        Integer.class, Picture.class
     ); 
 }

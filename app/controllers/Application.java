@@ -90,11 +90,11 @@ public class Application extends Controller {
                 picList.add((Picture) p[i]);
             }
         }
-        int randomImage1 = (int) ((((Math.random()*100))%(picList.size())) + 1);
-        int randomImage2 = (int) ((((Math.random()*100))%(picList.size())) + 1);
+        int randomImage1 = (int) ((((Math.random()*100))%(picList.size())));
+        int randomImage2 = (int) ((((Math.random()*100))%(picList.size())));
         int [] returnedImages = new int [2];
-        returnedImages[0] = randomImage1;
-        returnedImages[1] = randomImage2;
+        returnedImages[0] = picList.get(randomImage1).id;
+        returnedImages[1] = picList.get(randomImage2).id;
         return returnedImages;
     }
             
@@ -102,17 +102,34 @@ public class Application extends Controller {
 
         //initializeDB();
         User user = User.find.byId("a@a.com");
-        
         int cat1 = GraphicalPassword.find.byId(user.email).cat1;
         int cat2 = GraphicalPassword.find.byId(user.email).cat2;
         int cat3 = GraphicalPassword.find.byId(user.email).cat3;
+        
+        List<Integer> categories = new ArrayList<>();
+        categories.add(cat1);
+        categories.add(cat2);
+        categories.add(cat3);
+
         int [] cat1Pics = getCategoryImages(cat1);
         int [] cat2Pics = getCategoryImages(cat2);
         int [] cat3Pics = getCategoryImages(cat3);
-//        System.out.println(cat1Pics[0] + " , " + cat1Pics[1]);
-//        System.out.println(cat2Pics[0] + " , " + cat2Pics[1]);
-//        System.out.println(cat3Pics[0] + " , " + cat3Pics[1]);
-        return ok(login.render(user,Form.form(Category.class)));
+        List<Integer> catPics = new ArrayList<>();
+        catPics.add(cat1Pics[0]);
+        catPics.add(cat1Pics[1]);
+        catPics.add(cat2Pics[0]);
+        catPics.add(cat2Pics[1]);
+        catPics.add(cat3Pics[0]);
+        catPics.add(cat3Pics[1]);
+
+         List<Integer> places = new ArrayList<>();
+        while(places.size() < 6){
+            int randomPlace = (int) ((((Math.random()*100))%(16)) + 1);
+            if(!places.contains(randomPlace)){
+                places.add(randomPlace);
+            }           
+        }
+        return ok(login.render(user,catPics,categories,places,Form.form(Category.class)));
     }
 
 
