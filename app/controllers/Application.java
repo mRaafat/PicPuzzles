@@ -16,7 +16,7 @@ public class Application extends Controller {
     public static boolean init = false;
     
     public static Result index() {
-        //initializeDB();
+        initializeDB();
  
         List<Category> categories = Category.find.all();
         return ok(signUp.render(categories,Form.form(User.class)));
@@ -51,9 +51,19 @@ public class Application extends Controller {
 
     }
     
-        public static Result login(){
+    public static Result login(){
         List<Category> categories = Category.find.all();
         return ok(login.render(User.find.byId(""),Form.form(Category.class)));
+    }
+
+
+    public static Result validateLogin(){
+
+    return success();
+    }
+
+    public static Result success(){
+        return ok(success.render());
     }
 
      public static void initializeDB(){

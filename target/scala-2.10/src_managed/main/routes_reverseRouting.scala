@@ -1,6 +1,6 @@
 // @SOURCE:/Essam Hafez/Gam3a/10th semester/909/project/PicPuzzles/conf/routes
-// @HASH:c2b5cc8f8635e4a38e07922c866d549184996302
-// @DATE:Sun May 04 12:35:55 EET 2014
+// @HASH:4851b580354308dab7050584e5a9b1d842b5b1cf
+// @DATE:Sun May 04 15:22:53 EET 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,17 +13,19 @@ import play.libs.F
 import Router.queryString
 
 
-// @LINE:12
+// @LINE:17
+// @LINE:14
+// @LINE:11
 // @LINE:9
 // @LINE:7
 // @LINE:6
 package controllers {
 
-// @LINE:12
+// @LINE:17
 class ReverseAssets {
     
 
-// @LINE:12
+// @LINE:17
 def at(file:String): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("file", file))
 }
@@ -32,6 +34,8 @@ def at(file:String): Call = {
 }
                           
 
+// @LINE:14
+// @LINE:11
 // @LINE:9
 // @LINE:7
 // @LINE:6
@@ -41,6 +45,18 @@ class ReverseApplication {
 // @LINE:7
 def signUp(): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "login")
+}
+                                                
+
+// @LINE:11
+def validateLogin(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "validateLogin")
+}
+                                                
+
+// @LINE:14
+def success(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "success")
 }
                                                 
 
@@ -62,17 +78,19 @@ def login(): Call = {
                   
 
 
-// @LINE:12
+// @LINE:17
+// @LINE:14
+// @LINE:11
 // @LINE:9
 // @LINE:7
 // @LINE:6
 package controllers.javascript {
 
-// @LINE:12
+// @LINE:17
 class ReverseAssets {
     
 
-// @LINE:12
+// @LINE:17
 def at : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Assets.at",
    """
@@ -86,6 +104,8 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:14
+// @LINE:11
 // @LINE:9
 // @LINE:7
 // @LINE:6
@@ -98,6 +118,28 @@ def signUp : JavascriptReverseRoute = JavascriptReverseRoute(
    """
       function() {
       return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
+      }
+   """
+)
+                        
+
+// @LINE:11
+def validateLogin : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.validateLogin",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "validateLogin"})
+      }
+   """
+)
+                        
+
+// @LINE:14
+def success : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.success",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "success"})
       }
    """
 )
@@ -131,18 +173,20 @@ def login : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
-// @LINE:12
+// @LINE:17
+// @LINE:14
+// @LINE:11
 // @LINE:9
 // @LINE:7
 // @LINE:6
 package controllers.ref {
 
 
-// @LINE:12
+// @LINE:17
 class ReverseAssets {
     
 
-// @LINE:12
+// @LINE:17
 def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]), "GET", """ Map static resources from the /public folder to the /assets URL path""", _prefix + """assets/$file<.+>""")
 )
@@ -151,6 +195,8 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:14
+// @LINE:11
 // @LINE:9
 // @LINE:7
 // @LINE:6
@@ -160,6 +206,18 @@ class ReverseApplication {
 // @LINE:7
 def signUp(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.signUp(), HandlerDef(this, "controllers.Application", "signUp", Seq(), "POST", """""", _prefix + """login""")
+)
+                      
+
+// @LINE:11
+def validateLogin(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.validateLogin(), HandlerDef(this, "controllers.Application", "validateLogin", Seq(), "GET", """""", _prefix + """validateLogin""")
+)
+                      
+
+// @LINE:14
+def success(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.success(), HandlerDef(this, "controllers.Application", "success", Seq(), "GET", """""", _prefix + """success""")
 )
                       
 
