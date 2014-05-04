@@ -6,6 +6,11 @@
 		.cell {width:100px;height:100px;}
 	</style>
 	<script>
+
+	function postImages(){
+		document.getElementById("img1").src="@routes.Assets.at("images/plant2.jpg")";
+	}
+
 	function allowDrop(ev)
 	{
 	ev.preventDefault();
@@ -28,13 +33,15 @@
 	}
 	</script>
 	</head>
-	<body>
+	<body onload="javascript:postImages()">
 
 	@helper.form(action = routes.Application.validateLogin()) {
+	<span id="testy"></span>
 	<table border="1">
 	<tr>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-		<img id="img1" src="@routes.Assets.at("images/plant1.jpg")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
+		<img id="img1" src="@routes.Assets.at("images/plant1.jpg")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img2" src="images/wheels.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img3" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img4" src="images/sm-ala2ona.png" draggable="true" ondragstart="drag(event)" width="99" height="99"></td>

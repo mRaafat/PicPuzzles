@@ -82,11 +82,11 @@ public class Application extends Controller {
         }
             
 
-    public int [] getCategoryImages(int category){
+    public static int [] getCategoryImages(int category){
         Object [] p = Picture.find.all().toArray();
         List <Picture> picList = new LinkedList<Picture>();
         for(int i=0;i<p.length;i++){
-            if(((Picture) p[i]).category.number == category){
+            if(((Picture) p[i]).category.getID() == category){
                 picList.add((Picture) p[i]);
             }
         }
@@ -102,10 +102,16 @@ public class Application extends Controller {
 
         //initializeDB();
         User user = User.find.byId("a@a.com");
-        System.out.println(user);
-        int cat1 = user.graphicalPassword.cat1;
-        int cat2 = user.graphicalPassword.cat2;
-        int cat3 = user.graphicalPassword.cat3;
+        
+        int cat1 = GraphicalPassword.find.byId(user.email).cat1;
+        int cat2 = GraphicalPassword.find.byId(user.email).cat2;
+        int cat3 = GraphicalPassword.find.byId(user.email).cat3;
+        int [] cat1Pics = getCategoryImages(cat1);
+        int [] cat2Pics = getCategoryImages(cat2);
+        int [] cat3Pics = getCategoryImages(cat3);
+//        System.out.println(cat1Pics[0] + " , " + cat1Pics[1]);
+//        System.out.println(cat2Pics[0] + " , " + cat2Pics[1]);
+//        System.out.println(cat3Pics[0] + " , " + cat3Pics[1]);
         return ok(login.render(user,Form.form(Category.class)));
     }
 
