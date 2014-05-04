@@ -1,4 +1,5 @@
 @(categories: List[Category],userForm:Form[User])
+@import helper._
 @import helper.twitterBootstrap._
 @main("Signup"){
 
@@ -9,65 +10,77 @@
 </head>
 
 <body>
-
-    @helper.form(routes.Applications.login(){
+<fieldset>
+    @helper.form(routes.Application.signUp()){
     <div class="container">
 
       <form class="form-signin" role="form">
         <h2 class="form-signin-heading">Please enter your details below</h2>
-        <input type="text" class="form-control" placeholder="Name" required>
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        @inputText(
+            userForm("name"),
+            '_label -> "Full name"
+        )
+         @inputPassword(
+                userForm("password"), 
+                '_label -> "Password",
+                '_help -> "A password must be at least 6 characters. "
+            )
+            
+            @inputText(
+                userForm("email"), '_label -> "Email",
+                '_help -> "Enter a valid email address."
+            )
+  
+            @helper.form(action=routes.Application.signUp(),'id ->"Categories"){
+                <select class="form-control" title="choose a category" name="Categories" >
+        @for(category <- categories){
+        <option>@category.catName</option>
+        }
+
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
         <div class="text-center">
             
-        <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+        <button class="btn btn-primary btn-block" type="submit">Sign up</button> <br>
             
         </div>
         <div class="row">
-            <div class="col-md-6">
-        <p> <h3>Choose a category then choose corresoponding places</h3></p>
-        <select class="form-control" title="choose a category" name="Categories" >
-        @for(category <- categories){
-        <option>@category.catName</option>
-        }
-        </select>
+    
             </div>
             <div class="col-md-6">
                 <div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="1">1</button>
+                <button type="submit" class="btn btn-default btn-block" value="1" name="num">1</button>
                 </div> <div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="2">2</button>
+                <button type="submit" class="btn btn-default btn-block" value="2" name="num">2</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="3">3</button>
+                <button type="submit" class="btn btn-default btn-block" value="3"name="num">3</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="4">4</button><br>
+                <button type="submit" class="btn btn-default btn-block" value="4"name="num">4</button><br>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="5">5</button>
+                <button type="submit" class="btn btn-default btn-block" value="5"name="num">5</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="6">6</button>
+                <button type="submit" class="btn btn-default btn-block" value="6"name="num">6</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block " id="7">7</button>
+                <button type="submit" class="btn btn-default btn-block " value="7"name="num">7</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="8 ">8</button><br>
+                <button type="submit" class="btn btn-default btn-block" value="8 "name="num">8</button><br>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="9">9</button>
+                <button type="submit" class="btn btn-default btn-block" value="9"name="num">9</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="10">10</button>
+                <button type="submit" class="btn btn-default btn-block" value="10"name="num">10</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="11">11</button>
+                <button type="submit" class="btn btn-default btn-block" value="11"name="num">11</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="12">12</button><br>
+                <button type="submit" class="btn btn-default btn-block" value="12"name="num">12</button><br>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="13">13</button>
+                <button type="submit" class="btn btn-default btn-block" value="13"name="num">13</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="14">14</button>
+                <button type="submit" class="btn btn-default btn-block" value="14"name="num">14</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="15">15</button>
+                <button type="submit" class="btn btn-default btn-block" value="15"name="num">15</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="16">16</button>
+                <button type="submit" class="btn btn-default btn-block" value="16"name="num">16</button>
                  </div>
             </div>
         </div>
@@ -75,8 +88,8 @@
       </form>
 
     </div>
+   </body>
     }
 
-</body>
-
+}
 }

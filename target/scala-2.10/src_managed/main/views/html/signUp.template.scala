@@ -20,14 +20,17 @@ import play.api.data.Field
 import play.mvc.Http.Context.Implicit._
 import views.html._
 /**/
-object signUp extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template1[List[Category],play.api.templates.HtmlFormat.Appendable] {
+object signUp extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template2[List[Category],Form[User],play.api.templates.HtmlFormat.Appendable] {
 
     /**/
-    def apply/*1.2*/(categories: List[Category]):play.api.templates.HtmlFormat.Appendable = {
-        _display_ {
+    def apply/*1.2*/(categories: List[Category],userForm:Form[User]):play.api.templates.HtmlFormat.Appendable = {
+        _display_ {import helper._
 
-Seq[Any](format.raw/*1.30*/("""
-"""),_display_(Seq[Any](/*2.2*/main("Signup")/*2.16*/{_display_(Seq[Any](format.raw/*2.17*/("""
+import helper.twitterBootstrap._
+
+
+Seq[Any](format.raw/*1.50*/("""
+"""),_display_(Seq[Any](/*4.2*/main("Signup")/*4.16*/{_display_(Seq[Any](format.raw/*4.17*/("""
 
 <head>
     
@@ -36,64 +39,80 @@ Seq[Any](format.raw/*1.30*/("""
 </head>
 
 <body>
-
+<fieldset>
+    """),_display_(Seq[Any](/*14.6*/helper/*14.12*/.form(routes.Application.signUp())/*14.46*/{_display_(Seq[Any](format.raw/*14.47*/("""
     <div class="container">
 
       <form class="form-signin" role="form">
         <h2 class="form-signin-heading">Please enter your details below</h2>
-        <input type="text" class="form-control" placeholder="Name" required>
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        """),_display_(Seq[Any](/*19.10*/inputText(
+            userForm("name"),
+            '_label -> "Full name"
+        ))),format.raw/*22.10*/("""
+         """),_display_(Seq[Any](/*23.11*/inputPassword(
+                userForm("password"), 
+                '_label -> "Password",
+                '_help -> "A password must be at least 6 characters. "
+            ))),format.raw/*27.14*/("""
+            
+            """),_display_(Seq[Any](/*29.14*/inputText(
+                userForm("email"), '_label -> "Email",
+                '_help -> "Enter a valid email address."
+            ))),format.raw/*32.14*/("""
+  
+            """),_display_(Seq[Any](/*34.14*/helper/*34.20*/.form(action=routes.Application.signUp(),'id ->"Categories")/*34.80*/{_display_(Seq[Any](format.raw/*34.81*/("""
+                <select class="form-control" title="choose a category" name="Categories" >
+        """),_display_(Seq[Any](/*36.10*/for(category <- categories) yield /*36.37*/{_display_(Seq[Any](format.raw/*36.38*/("""
+        <option>"""),_display_(Seq[Any](/*37.18*/category/*37.26*/.catName)),format.raw/*37.34*/("""</option>
+        """)))})),format.raw/*38.10*/("""
+
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
         <div class="text-center">
             
-        <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+        <button class="btn btn-primary btn-block" type="submit">Sign up</button> <br>
             
         </div>
         <div class="row">
-            <div class="col-md-6">
-        <p> <h3>Choose a category then choose corresoponding places</h3></p>
-        <select class="form-control" title="choose a category" name="Categories" >
-        """),_display_(Seq[Any](/*31.10*/for(category <- categories) yield /*31.37*/{_display_(Seq[Any](format.raw/*31.38*/("""
-        <option>"""),_display_(Seq[Any](/*32.18*/category/*32.26*/.catName)),format.raw/*32.34*/("""</option>
-        """)))})),format.raw/*33.10*/("""
-        </select>
+    
             </div>
-            <div class="col-md-6">
-                <div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="1">1</button>
-                </div> <div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="2">2</button>
+       
+                    <input name="action" type="submit" value="Save">
+                        <input name="action" type="submit" value="Save">
+                            <input name="action" type="submit" value="Save">
+                                <input name="action" type="submit" value="Save">
+                                    <input name="action" type="submit" value="Save">
+                 <div class="col-md-3">
+                <button type="button" class="btn btn-default btn-block" value="2" name="num">2</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="3">3</button>
+                <button type="button" class="btn btn-default btn-block" value="3"name="num">3</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="4">4</button><br>
+                <button type="button" class="btn btn-default btn-block" value="4"name="num">4</button><br>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="5">5</button>
+                <button type="submit" class="btn btn-default btn-block" value="5"name="num">5</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="6">6</button>
+                <button type="button" class="btn btn-default btn-block" value="6"name="num">6</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block " id="7">7</button>
+                <button type="button" class="btn btn-default btn-block " value="7"name="num">7</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="8 ">8</button><br>
+                <button type="button" class="btn btn-default btn-block" value="8 "name="num">8</button><br>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="9">9</button>
+                <button type="button" class="btn btn-default btn-block" id="9"name="num">9</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="10">10</button>
+                <button type="button" class="btn btn-default btn-block" value="10"name="num">10</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="11">11</button>
+                <button type="button" class="btn btn-default btn-block" value="11"name="num">11</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="12">12</button><br>
+                <button type="button" class="btn btn-default btn-block" value="12"name="num">12</button><br>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="13">13</button>
+                <button type="button" class="btn btn-default btn-block" value="13"name="num">13</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="14">14</button>
+                <button type="button" class="btn btn-default btn-block" value="14"name="num">14</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="15">15</button>
+                <button type="button" class="btn btn-default btn-block" value="15"name="num">15</button>
                  </div><div class="col-md-3">
-                <button type="button" class="btn btn-default btn-block" id="16">16</button>
+                <button type="button" class="btn btn-default btn-block" value="16"name="num">16</button>
                  </div>
             </div>
         </div>
@@ -101,26 +120,28 @@ Seq[Any](format.raw/*1.30*/("""
       </form>
 
     </div>
+   </body>
+    """)))})),format.raw/*95.6*/("""
 
-</body>
-
-""")))})))}
+""")))})),format.raw/*97.2*/("""
+""")))})),format.raw/*98.2*/("""
+"""))}
     }
     
-    def render(categories:List[Category]): play.api.templates.HtmlFormat.Appendable = apply(categories)
+    def render(categories:List[Category],userForm:Form[User]): play.api.templates.HtmlFormat.Appendable = apply(categories,userForm)
     
-    def f:((List[Category]) => play.api.templates.HtmlFormat.Appendable) = (categories) => apply(categories)
+    def f:((List[Category],Form[User]) => play.api.templates.HtmlFormat.Appendable) = (categories,userForm) => apply(categories,userForm)
     
     def ref: this.type = this
 
 }
                 /*
                     -- GENERATED --
-                    DATE: Sat May 03 22:17:21 EET 2014
+                    DATE: Sun May 04 12:18:09 EET 2014
                     SOURCE: /home/mohamed/Documents/PicPuzzle/app/views/signUp.scala.html
-                    HASH: 78fc126f1f7e3b0a3a4b9b1ded0dfb6d917c1545
-                    MATRIX: 783->1|905->29|941->31|963->45|1001->46|2027->1036|2070->1063|2109->1064|2163->1082|2180->1090|2210->1098|2261->1117
-                    LINES: 26->1|29->1|30->2|30->2|30->2|59->31|59->31|59->31|60->32|60->32|60->32|61->33
+                    HASH: 60d2646f39e5a7882188fc5221d5bb99531da7d9
+                    MATRIX: 794->1|986->49|1022->102|1044->116|1082->117|1210->210|1225->216|1268->250|1307->251|1504->412|1611->497|1658->508|1857->685|1920->712|2078->848|2131->865|2146->871|2215->931|2254->932|2391->1033|2434->1060|2473->1061|2527->1079|2544->1087|2574->1095|2625->1114|5742->4200|5776->4203|5809->4205
+                    LINES: 26->1|32->1|33->4|33->4|33->4|43->14|43->14|43->14|43->14|48->19|51->22|52->23|56->27|58->29|61->32|63->34|63->34|63->34|63->34|65->36|65->36|65->36|66->37|66->37|66->37|67->38|124->95|126->97|127->98
                     -- GENERATED --
                 */
             

@@ -5,6 +5,7 @@
 
 create table category (
   cat_name                  varchar(255) not null,
+  number                    integer,
   constraint pk_category primary key (cat_name))
 ;
 
