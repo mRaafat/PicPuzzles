@@ -1,5 +1,6 @@
 package controllers;
-
+import java.util.LinkedList;
+import java.util.List;
 import play.*;
 import play.mvc.*;
 import views.html.*;
@@ -81,17 +82,30 @@ public class Application extends Controller {
         }
             
 
-    public Integer [] getCategoryImages(int category){
-        List<Picture> pics = Picture.find.all();
-        int randomImage = (int) ((((Math.random()*100))%(pics.size())) + 1);
-        //Words word = Words.find.byId(randomImage);
-        return null;
+    public int [] getCategoryImages(int category){
+        Object [] p = Picture.find.all().toArray();
+        List <Picture> picList = new LinkedList<Picture>();
+        for(int i=0;i<p.length;i++){
+            if(((Picture) p[i]).category.number == category){
+                picList.add((Picture) p[i]);
+            }
+        }
+        int randomImage1 = (int) ((((Math.random()*100))%(picList.size())) + 1);
+        int randomImage2 = (int) ((((Math.random()*100))%(picList.size())) + 1);
+        int [] returnedImages = new int [2];
+        returnedImages[0] = randomImage1;
+        returnedImages[1] = randomImage2;
+        return returnedImages;
     }
             
     public static Result loginUser(){    
+
         //initializeDB();
         User user = User.find.byId("a@a.com");
-
+        System.out.println(user);
+        int cat1 = user.graphicalPassword.cat1;
+        int cat2 = user.graphicalPassword.cat2;
+        int cat3 = user.graphicalPassword.cat3;
         return ok(login.render(user,Form.form(Category.class)));
     }
 

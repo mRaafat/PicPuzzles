@@ -31,10 +31,10 @@ create table picture (
 ;
 
 create table user (
-  name                      varchar(255) not null,
-  email                     varchar(255),
+  email                     varchar(255) not null,
+  name                      varchar(255),
   password                  varchar(255),
-  constraint pk_user primary key (name))
+  constraint pk_user primary key (email))
 ;
 
 create sequence category_seq;

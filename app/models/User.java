@@ -9,8 +9,8 @@ import play.db.ebean.Model.Finder;
 @Entity
 public class User extends Model{
     @Id
-    public String name;
     public String email;
+    public String name;
     public String password;
     public GraphicalPassword graphicalPassword;
     public List<Integer> categorySeq;
