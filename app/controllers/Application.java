@@ -47,39 +47,30 @@ public class Application extends Controller {
     }
     
 
-    public static Result chooseGridSeq(String user1){
-        User user = User.find.byId(user1);
-        List<Category> categories = Category.find.all();
-        List<Integer> catAndSeq ;
-        DynamicForm requestData = Form.form().bindFromRequest();
-        if(requestData.hasErrors()){
+     public static Result chooseGridSeq(String email){
+        DynamicForm form = Form.form().bindFromRequest();
+        if(form.hasErrors()){
             return badRequest();
         }else{
-            if(!categorySet){
-                Category cat = Category.find.byId(requestData.get("Categories"));
-                int category = cat.getID();
-                user.categorySeq.add(category);
-                user.save();
-                categorySet = true;
-            }
-            
-                if(!attm1){
-                    pos1 = Integer.parseInt(requestData.get("num"));
-                    user.categorySeq.add(pos1);
-                    attm1 = true;
-                }else{
-                    if(!attm2){
-                        pos2 = Integer.parseInt(requestData.get("num"));
-                        user.categorySeq.add(pos2);
-                        attm2 = true;
-                        categorySet = false;
-                        attm1 = false;
-                        
-                    }
-                }
-                return ok(gridSeq.render(user.email,categories));
-            }
+         
+            int cat1 = Category.find.byId(form.get("cat1")).getID();
+            int cat2 = Category.find.byId(form.get("cat2")).getID();
+            int cat3 = Category.find.byId(form.get("cat3")).getID();
+            int cat1pos1 = Integer.parseInt(form.get("cat1Image1"));
+            int cat1pos2 = Integer.parseInt(form.get("cat1Image2"));
+            int cat2pos1 = Integer.parseInt(form.get("cat2Image1"));
+            int cat2pos2 = Integer.parseInt(form.get("cat2Image2"));
+            int cat3pos1 = Integer.parseInt(form.get("cat3Image1"));
+            int cat3pos2 = Integer.parseInt(form.get("cat3Image2"));
+            System.out.println(cat3pos2);
+            System.out.println(GraphicalPassword.find.byId(email).email);
+            GraphicalPassword.find.byId(email).setGraphicalPassword1(cat1,cat1pos1,cat1pos2);
+            GraphicalPassword.find.byId(email).setGraphicalPassword2(cat2,cat2pos1,cat2pos2);
+            GraphicalPassword.find.byId(email).setGraphicalPassword3(cat3,cat3pos1,cat3pos2);
+            return ok();
         }
+        
+    }
             
 
     public static int [] getCategoryImages(int category){
