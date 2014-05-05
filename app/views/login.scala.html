@@ -1,4 +1,4 @@
-@(user: User, pics:List[Integer],categories:List[Integer],places:List[Integer],helpForm: Form[Category])
+@(email: String, pics:List[Integer],categories:List[Integer],places:List[Integer],helpForm: Form[Category])
 
 @main("User") {
 	<head>
@@ -8,6 +8,8 @@
 	<script>
 
 	function postImages(){
+		document.getElementById("subm").style.visibility="hidden";
+		document.getElementById("hiddenDIV").style.visibility="hidden";
 		document.getElementById("img"+@places.get(0)).src="@routes.Assets.at(Picture.find.byId(pics.get(0)).image_link)";
 		document.getElementById("img"+@places.get(1)).src="@routes.Assets.at(Picture.find.byId(pics.get(1)).image_link)";
 		document.getElementById("img"+@places.get(2)).src="@routes.Assets.at(Picture.find.byId(pics.get(2)).image_link)";
@@ -25,86 +27,102 @@
 	{
 	ev.dataTransfer.setData("Text",ev.target.id);
 	}
-
+	var countSwitch = 0;
 	function drop(ev)
 	{
 	var me = document.getElementById(ev.target.id);
 	ev.preventDefault();
 	var data=ev.dataTransfer.getData("Text");
 	var pic = document.getElementById(data);
+	document.getElementById("origin").innerHTML += data +",";
+	document.getElementById("target").innerHTML += ev.target.id+",";
+	countSwitch++;
 	var temp = pic.src;
 	pic.src = me.src;
 	me.src = temp;
+	me.src = "@routes.Assets.at("images/white.png")";
+	if(countSwitch >= 6  ){
+		document.getElementById("subm").style.visibility="visible";
+		document.getElementById("table1").style.visibility="hidden";
+	}
 	}
 	</script>
 	</head>
 	<body onload="javascript:postImages()">
-
-	@helper.form(action = routes.Application.validateLogin()) {
+	<div id="hiddenDIV">
+		@helper.form(action = routes.Application.validateLogin(email,pics,categories,places)) {
+		@helper.input(helpForm("origin"), '_label -> "", '_id -> "origin") { (id, name, value, args) =>
+	        <input type="hidden" name="@name" id="@id" @toHtmlArgs(args)>
+	    }
+	    @helper.input(helpForm("target"), '_label -> "", '_id -> "target") { (id, name, value, args) =>
+	        <input type="hidden" name="@name" id="@id" @toHtmlArgs(args)>
+	    }
+	</div>
 	<span id="testy"></span>
-	<table border="1">
+	<table border="1" id="table1">
 	<tr>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img1" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img1" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img2" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img2" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img3" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img3" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img4" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img4" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 	</tr>
 
 	<tr>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img5" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img5" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img6" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img6" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img7" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img7" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img8" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img8" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 	</tr>
 
 	<tr>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img9" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img9" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img10" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img10" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img11" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img11" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img12" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img12" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 
 	</tr>
 		<tr>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img13" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img13" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img14" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img14" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img15" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img15" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 		<td class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<img id="img16" src="@routes.Assets.at("images/white.png")" alt="" class="img-rounded" draggable="true" ondragstart="drag(event)" width="99" height="99">
+			<img id="img16" src="@routes.Assets.at("images/white.png")" alt="" draggable="true" ondragstart="drag(event)" width="99" height="99">
 		</td>
 	</tr>
 
 	</tr>
 	</table>
+	 <button type="submit" id="subm" class="btn btn-primary">Submit</button>
 	}
 	</body>
 }

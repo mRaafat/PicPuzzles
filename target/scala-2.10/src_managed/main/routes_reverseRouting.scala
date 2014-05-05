@@ -1,6 +1,6 @@
 // @SOURCE:/Essam Hafez/Gam3a/10th semester/909/project/PicPuzzles/conf/routes
-// @HASH:c2fd78c19232ea941d6e9db04d761edd5eee0a80
-// @DATE:Sun May 04 15:34:14 EET 2014
+// @HASH:7590de50fef01b8c50c02cced5959e56007af3f7
+// @DATE:Mon May 05 05:02:44 EET 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -57,8 +57,8 @@ def signUp(): Call = {
                                                 
 
 // @LINE:15
-def validateLogin(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "validateLogin")
+def validateLogin(email:String, cp:java.util.List[Integer], c:java.util.List[Integer], p:java.util.List[Integer]): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "validateLogin" + queryString(List(Some(implicitly[QueryStringBindable[String]].unbind("email", email)), Some(implicitly[QueryStringBindable[java.util.List[Integer]]].unbind("cp", cp)), Some(implicitly[QueryStringBindable[java.util.List[Integer]]].unbind("c", c)), Some(implicitly[QueryStringBindable[java.util.List[Integer]]].unbind("p", p)))))
 }
                                                 
 
@@ -148,8 +148,8 @@ def signUp : JavascriptReverseRoute = JavascriptReverseRoute(
 def validateLogin : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.validateLogin",
    """
-      function() {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "validateLogin"})
+      function(email,cp,c,p) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "validateLogin" + _qS([(""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("email", email), (""" + implicitly[QueryStringBindable[java.util.List[Integer]]].javascriptUnbind + """)("cp", cp), (""" + implicitly[QueryStringBindable[java.util.List[Integer]]].javascriptUnbind + """)("c", c), (""" + implicitly[QueryStringBindable[java.util.List[Integer]]].javascriptUnbind + """)("p", p)])})
       }
    """
 )
@@ -239,8 +239,8 @@ def signUp(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
                       
 
 // @LINE:15
-def validateLogin(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.validateLogin(), HandlerDef(this, "controllers.Application", "validateLogin", Seq(), "GET", """""", _prefix + """validateLogin""")
+def validateLogin(email:String, cp:java.util.List[Integer], c:java.util.List[Integer], p:java.util.List[Integer]): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.validateLogin(email, cp, c, p), HandlerDef(this, "controllers.Application", "validateLogin", Seq(classOf[String], classOf[java.util.List[Integer]], classOf[java.util.List[Integer]], classOf[java.util.List[Integer]]), "POST", """""", _prefix + """validateLogin""")
 )
                       
 

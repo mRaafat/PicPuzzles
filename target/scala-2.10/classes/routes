@@ -12,7 +12,7 @@ POST     /gridSeq                   controllers.Application.chooseGridSeq(user:S
 
 GET     /loginUser                          controllers.Application.loginUser()
 
-GET		/validateLogin					controllers.Application.validateLogin()
+POST		/validateLogin				controllers.Application.validateLogin(email:String, cp:java.util.List[Integer], c:java.util.List[Integer], p:java.util.List[Integer])
 
 GET     /success                           controllers.Application.success()
 

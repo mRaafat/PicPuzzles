@@ -129,17 +129,28 @@ public class Application extends Controller {
                 places.add(randomPlace);
             }           
         }
-        return ok(login.render(user,catPics,categories,places,Form.form(Category.class)));
+        return ok(login.render(user.email,catPics,categories,places,Form.form(Category.class)));
     }
 
 
-    public static Result validateLogin(){
-
-    return success();
+    public static Result validateLogin(String email, List<Integer> catPics, List<Integer> categories, List<Integer> places){
+        DynamicForm requestData = Form.form().bindFromRequest();
+        String origin = requestData.get("origin");
+        String target = requestData.get("target");
+        System.out.println(origin);
+        System.out.println();
+        System.out.println(target);
+        if(true){
+            return success();    
+        }else{
+            return ok(login.render(email,catPics,categories,places,Form.form(Category.class)));
+        }
+        
 
     }
 
     public static Result success(){
+
         return ok(success.render());
     }
      public static void initializeDB(){

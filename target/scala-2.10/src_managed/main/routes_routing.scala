@@ -1,6 +1,6 @@
 // @SOURCE:/Essam Hafez/Gam3a/10th semester/909/project/PicPuzzles/conf/routes
-// @HASH:c2fd78c19232ea941d6e9db04d761edd5eee0a80
-// @DATE:Sun May 04 15:34:14 EET 2014
+// @HASH:7590de50fef01b8c50c02cced5959e56007af3f7
+// @DATE:Mon May 05 05:02:44 EET 2014
 
 
 import play.core._
@@ -45,7 +45,7 @@ private[this] lazy val controllers_Application_loginUser3 = Route("GET", PathPat
         
 
 // @LINE:15
-private[this] lazy val controllers_Application_validateLogin4 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("validateLogin"))))
+private[this] lazy val controllers_Application_validateLogin4 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("validateLogin"))))
         
 
 // @LINE:17
@@ -55,7 +55,7 @@ private[this] lazy val controllers_Application_success5 = Route("GET", PathPatte
 // @LINE:20
 private[this] lazy val controllers_Assets_at6 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.signUp()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """gridSeq""","""controllers.Application.chooseGridSeq(user:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """loginUser""","""controllers.Application.loginUser()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """validateLogin""","""controllers.Application.validateLogin()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """success""","""controllers.Application.success()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.signUp()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """gridSeq""","""controllers.Application.chooseGridSeq(user:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """loginUser""","""controllers.Application.loginUser()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """validateLogin""","""controllers.Application.validateLogin(email:String, cp:java.util.List[Integer], c:java.util.List[Integer], p:java.util.List[Integer])"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """success""","""controllers.Application.success()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -97,8 +97,8 @@ case controllers_Application_loginUser3(params) => {
 
 // @LINE:15
 case controllers_Application_validateLogin4(params) => {
-   call { 
-        invokeHandler(controllers.Application.validateLogin(), HandlerDef(this, "controllers.Application", "validateLogin", Nil,"GET", """""", Routes.prefix + """validateLogin"""))
+   call(params.fromQuery[String]("email", None), params.fromQuery[java.util.List[Integer]]("cp", None), params.fromQuery[java.util.List[Integer]]("c", None), params.fromQuery[java.util.List[Integer]]("p", None)) { (email, cp, c, p) =>
+        invokeHandler(controllers.Application.validateLogin(email, cp, c, p), HandlerDef(this, "controllers.Application", "validateLogin", Seq(classOf[String], classOf[java.util.List[Integer]], classOf[java.util.List[Integer]], classOf[java.util.List[Integer]]),"POST", """""", Routes.prefix + """validateLogin"""))
    }
 }
         
